@@ -10,7 +10,7 @@ using namespace std;
 
 class Book : public Product{
 public:
-    Book(string name, float price, int quantity, string cat, string isbn, string author);
+    Book(string name, double price, int quantity, string cat, string isbn, string author);
 
     set<string> keywords() const;
     string displayString() const;

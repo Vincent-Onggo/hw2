@@ -5,7 +5,7 @@
 #include "clothing.h"
 #include "util.h"
 #include <sstream>
-Clothing ::Clothing(std::string name, float price, double quantity, std::string cat, std::string size,
+Clothing ::Clothing(std::string name, double price, double quantity, std::string cat, std::string size,
                     std::string brand): Product(cat, name, price, quantity ) {
     size_ = size;
     brand_ = brand;

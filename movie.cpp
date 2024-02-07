@@ -7,7 +7,7 @@
 #include "product.h"
 #include <sstream>
 
-Movie::Movie(std::string name, float price, int quantity, std::string cat, std::string genre, std::string rating) : Product(cat, name, price, quantity){
+Movie::Movie(std::string name, double price, int quantity, std::string cat, std::string genre, std::string rating) : Product(cat, name, price, quantity){
     rating_ = rating;
     genre_ = genre;
 

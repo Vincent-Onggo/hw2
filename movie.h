@@ -11,7 +11,7 @@ using namespace std;
 
 class Movie : public Product {
 public:
-    Movie(string name, float price, int quantity, string cat, string genre, string rating);
+    Movie(string name, double price, int quantity, string cat, string genre, string rating);
 
     set<string> keywords() const;
     string displayString() const;

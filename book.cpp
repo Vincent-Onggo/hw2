@@ -5,7 +5,7 @@
 #include "util.h"
 #include "product.h"
 #include <sstream>
-Book::Book(std::string name, float price, int quantity, std::string cat, std::string isbn, std::string author):Product(cat, name, price, quantity){
+Book::Book(std::string name, double price, int quantity, std::string cat, std::string isbn, std::string author):Product(cat, name, price, quantity){
     author_ = author;
     isbn_ = isbn;
 }

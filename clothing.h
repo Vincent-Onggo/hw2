@@ -15,7 +15,7 @@ class Clothing : public Product{
     void dump(ostream& data) const;
 
 public:
-    Clothing(string name, float price, double quantity, string cat, string size, string brand);
+    Clothing(string name, double price, double quantity, string cat, string size, string brand);
 
 private:
     string size_, brand_;
