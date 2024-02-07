@@ -15,14 +15,14 @@ set<string> Book::keywords() const {
     name_keys = parseStringToWords(name_);
     author_keys = parseStringToWords(author_);
     list = setUnion(name_keys, author_keys);
-    list.insert(isbn_);
+    list = setUnion(list, isbn_keys);
     return list;
 }
 
 string Book::displayString() const {
-    stringstream ss;
-    ss << price_ << qty_ << " left.";
-    string output = name_ + "\n" + "Author: " + author_ + " ISBN: " + isbn_ + "\n" + ss.str();
+    string price = to_string(price_);
+    string qty = to_string(qty_);
+    string output = name_ + "\n" + "Author: " + author_ + " ISBN: " + isbn_ + "\n" + price + " " + qty + " left.";
     return output;
 }
 

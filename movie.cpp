@@ -23,9 +23,9 @@ set<string> Movie :: keywords() const{
 }
 
 string Movie ::displayString() const {
-    stringstream ss;
-    ss << price_ << qty_ << " left.";
-    string output = name_ + "\n" + "Genre: " + genre_ + " Rating: " + rating_ + "\n" + ss.str();
+    string price = to_string(price_);
+    string qty = to_string(qty_);
+    string output = name_ + "\n" + "Genre: " + genre_ + " Rating: " + rating_ + "\n" + price + " " + qty + " left.";
     return output;
 }
 

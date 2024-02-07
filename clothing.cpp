@@ -20,9 +20,10 @@ set<string> Clothing :: keywords() const{
 }
 
 string Clothing ::displayString() const {
-    stringstream ss;
-    ss << price_ << qty_ << " is left.";
-    string output = name_ + "\n" + "Size: " + size_ + " Brand: " + brand_ + "\n" + ss.str();
+    string price = to_string(price_);
+    string qty = to_string(qty_);
+
+    string output = name_ + "\n" + "Size: " + size_ + " Brand: " + brand_ + "\n" + price + " " + qty + " left.";
     return output;
 }
 
