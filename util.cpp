@@ -15,16 +15,25 @@ std::string convToLower(std::string src)
     to a set of words based on the criteria given in the assignment **/
 std::set<std::string> parseStringToWords(string rawWords)
 {
+    set<string> keyWords;
+    int len = rawWords.size();
+    // TODO: implement case if rawWords is ISBN code
 
-
-
-
-
-
-
-
-
-
+    string currentWord = "";
+    for(int i=0; i<len; i++){
+        if((rawWords[i] >= 'a' and rawWords[i] <= 'z') or (rawWords[i] >= 'A' and rawWords[i] <= 'Z')){
+            currentWord += rawWords[i];
+        }else{
+            if(currentWord.size() >= 2){
+                keyWords.insert(convToLower(currentWord));
+            }
+            currentWord = "";
+        }
+    }
+    if(currentWord.size() >= 2){
+        keyWords.insert(convToLower(currentWord));
+    }
+    return keyWords;
 }
 
 /**************************************************
