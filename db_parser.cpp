@@ -68,11 +68,13 @@ bool DBParser::parse(string db_filename, DataStore& ds)
 
         }
         else if(state == IN_SECTION) {
-            if((line.size() > 3) && line[0] == '<' && line[1] == '/' && line[line.size()-1] == '>') {
+            if( (line.size() > 3) && line[0] == '<' && line[1] == '/' && line[line.size()-1] == '>') {
                 map<string, SectionParser*>::iterator it = parsers_.find(sectionName);
                 if(it != parsers_.end()) {
+                    std::cout << "calling error_ = it->second->parse(sectionText, ds, startLineNo, errorMsg_); sectionName="<< sectionName<< " \n";
                     error_ = it->second->parse(sectionText, ds, startLineNo, errorMsg_);
                     if(error_) {
+                        std::cout << "FOUND ERROR\n";
                         lineno_ = startLineNo;
                     }
 
