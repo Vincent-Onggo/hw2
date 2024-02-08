@@ -5,7 +5,29 @@
 #include "mydatastore.h"
 #include "util.h"
 
+MyDataStore::MyDataStore() {
 
+}
+
+MyDataStore::~MyDataStore(){
+    for(size_t i=0; i<products.size(); i++){
+        delete products[i];
+    }
+    for(size_t i=0; i<users.size(); i++){
+        delete users[i];
+    }
+    for(map<string, set<Product*>>::iterator it=productKeys.begin(); it!=productKeys.end(); ++it){
+        for(Product* product : it->second){
+            delete product;
+        }
+    }
+    for(map<string, vector<Product*>>::iterator it=carts.begin(); it!=carts.end(); ++it){
+        for(Product* product : it->second){
+            delete product;
+        }
+    }
+
+}
 
 void MyDataStore::addProduct(Product *p) {
 

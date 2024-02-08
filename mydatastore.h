@@ -13,6 +13,8 @@ using namespace std;
 
 class MyDataStore : public DataStore{
 public:
+    MyDataStore();
+    ~MyDataStore();
     void addProduct(Product *p); // add a product to the data store
 
     void addUser(User *u); // add a user to the data store
