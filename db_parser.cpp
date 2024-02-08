@@ -11,8 +11,6 @@
 
 using namespace std;
 
-#define DEBUG
-
 DBParser::DBParser()
 {
     lineno_ = 1;
