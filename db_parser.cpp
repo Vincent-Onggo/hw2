@@ -9,7 +9,6 @@
 #include "db_parser.h"
 #include "util.h"
 
-
 using namespace std;
 
 
