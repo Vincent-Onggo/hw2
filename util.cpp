@@ -17,7 +17,6 @@ std::set<std::string> parseStringToWords(string rawWords)
 {
     set<string> keyWords;
     int len = rawWords.size();
-    // TODO: implement case if rawWords is ISBN code
 
     string currentWord = "";
     for(int i=0; i<len; i++){

@@ -30,7 +30,7 @@ void MyDataStore::addProduct(Product *p) {
 void MyDataStore::addUser(User *u) {
     // check if user exist already
     bool exist = false;
-    for(int i=0; i<users.size(); i++){
+    for(size_t i=0; i<users.size(); i++){
         if(u->getName() == users[i]->getName()){
             exist = true;
         }
@@ -70,17 +70,17 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string> &terms, int t
 }
 
 void MyDataStore::dump(std::ostream &ofile) {
-    ofile << "<products>" << endl;
+    ofile << "<products>" << "\n";
     for(int i=0; i<products.size(); i++){
         products[i]->dump(ofile);
     }
-    ofile << "</products>" << endl;
+    ofile << "</products>" << "\n";
 
-    ofile << "<users>" << endl;
+    ofile << "<users>" << "\n";
     for(int i=0; i<users.size(); i++){
         users[i]->dump(ofile);
     }
-    ofile << "</users>" << endl;
+    ofile << "</users>";
 }
 
 bool MyDataStore::checkUser(std::string username) {
