@@ -118,13 +118,13 @@ void MyDataStore::dump(std::ostream &ofile) {
 }
 
 bool MyDataStore::checkUser(std::string username) {
-    bool exists = false;
-    for(int i=0; i<users.size(); i++){
-        if(username == users[i]->getName()){
-            exists = true;
+
+    for(vector<User*>::iterator it = users.begin(); it != users.end(); ++it){
+        if((*it)->getName() == username){
+            return true;
         }
     }
-    return exists;
+    return false;
 }
 
 void MyDataStore::addToCart(std::string username, Product* item){

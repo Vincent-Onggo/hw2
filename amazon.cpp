@@ -99,13 +99,13 @@ int main(int argc, char* argv[])
                 }
                 done = true;
             }
-            else if( cmd == "ADD"){
+            else if( cmd == "ADD"){ // add to cart
                 string username;
                 int hit_result_index;
-                if(!(ss >> username >> hit_result_index) or ds.checkUser(username)){ // if username or hit_result_index not entered or username not found
+                if(!(ss >> username >> hit_result_index) or !ds.checkUser(username)){ // if username or hit_result_index not entered or username not found
                     cout << "Invalid request" << endl;
                 }else{
-                    ds.addToCart(username, hits[hit_result_index]);
+                    ds.addToCart(username, hits[hit_result_index-1]);
                 }
             }
             else if( cmd == "VIEWCART"){
