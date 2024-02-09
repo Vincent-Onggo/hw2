@@ -106,7 +106,7 @@ int main(int argc, char* argv[])
                     cout << "Invalid request" << endl;
                 }else{
                     ds.addToCart(username, hits[hit_result_index-1]);
-                    hits.erase(hits.begin() + hit_result_index - 1); // made more errors
+//                    hits.erase(hits.begin() + hit_result_index - 1); // made more errors
                 }
             }
             else if( cmd == "VIEWCART"){
@@ -115,7 +115,7 @@ int main(int argc, char* argv[])
                     cout << "Invalid username" << endl;
                 }else{
                     vector<Product*> temp = ds.getCart(username);
-                    reverse(temp.begin(), temp.end());
+//                    reverse(temp.begin(), temp.end());
                     displayProducts(temp);
                 }
             }
@@ -138,6 +138,12 @@ int main(int argc, char* argv[])
 
 void displayProducts(vector<Product*>& hits)
 {
+    cerr << "===============DISPLAY==============\n";
+    for(auto hit:hits){
+        cerr << hit->getName() << endl;
+    }
+    cerr << "===============DISPLAY==============\n";
+
     int resultNo = 1;
     if (hits.begin() == hits.end()) {
     	cout << "No results found!" << endl;
