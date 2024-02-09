@@ -115,9 +115,9 @@ int main(int argc, char* argv[])
                     cout << "Invalid username" << endl;
                 }else{
                     vector<Product*> temp = ds.getCart(username);
-                    for(size_t i=0; i<temp.size(); i++){
-                        cout << i << " " << temp[i]->getName() << endl;
-                    }
+//                    for(size_t i=0; i<temp.size(); i++){
+//                        cout << i+1 << " " << temp[i]->getName() << endl;
+//                    }
                 }
             }
             else if ( cmd == "BUYCART"){
