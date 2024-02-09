@@ -106,6 +106,7 @@ int main(int argc, char* argv[])
                     cout << "Invalid request" << endl;
                 }else{
                     ds.addToCart(username, hits[hit_result_index-1]);
+                    hits.erase(hits.begin() + hit_result_index - 1);
                 }
             }
             else if( cmd == "VIEWCART"){
