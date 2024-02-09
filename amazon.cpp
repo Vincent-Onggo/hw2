@@ -116,7 +116,9 @@ int main(int argc, char* argv[])
                 }else{
                     vector<Product*> temp = ds.getCart(username);
 //                    reverse(temp.begin(), temp.end());
-                    displayProducts(temp);
+                    for(size_t i=0; i<temp.size(); i++){
+                        cout << i+1 << " " << temp[i]->displayString() << endl;
+                    }
                 }
             }
             else if ( cmd == "BUYCART"){
