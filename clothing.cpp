@@ -28,5 +28,5 @@ string Clothing ::displayString() const {
 }
 
 void Clothing :: dump(ostream& os) const{
-    cout << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << size_ << "\n" << brand_ << "\n";
+    os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << size_ << "\n" << brand_ << "\n";
 }
