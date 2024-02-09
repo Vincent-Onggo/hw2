@@ -138,11 +138,6 @@ int main(int argc, char* argv[])
 
 void displayProducts(vector<Product*>& hits)
 {
-    cerr << "===============DISPLAY==============\n";
-    for(auto hit:hits){
-        cerr << hit->getName() << endl;
-    }
-    cerr << "===============DISPLAY==============\n";
 
     int resultNo = 1;
     if (hits.begin() == hits.end()) {

@@ -134,22 +134,12 @@ void MyDataStore::addToCart(std::string username, Product* item){
         carts.insert(make_pair(username, temp));
     }else{
         carts.find(username)->second.push_back(item);
-        cerr << "-----------CARTS-----------\n";
-        for(auto i : carts.find(username)->second){
-            cerr << i->getName() << endl;
-        }
-        cerr << "-----------/CARTS-----------\n";
-
     }
 }
 
 vector<Product*> MyDataStore::getCart(std::string username) {
     vector<Product*> cart = carts.find(username)->second;
-    cerr << "----------- GETTING CARTS-----------\n";
-    for(auto i : carts.find(username)->second){
-        cerr << i->getName() << endl;
-    }
-    cerr << "-----------/CARTS-----------\n";
+
     return cart;
 }
 void MyDataStore::buyCart(std::string username) {
