@@ -121,7 +121,7 @@ int main(int argc, char* argv[])
             }
             else if ( cmd == "BUYCART"){
                 string username;
-                if(!(ss >> username)){
+                if(!(ss >> username) or !ds.checkUser(username)){
                     cout << "Invalid username" << endl;
                 }else{
                     ds.buyCart(username);
