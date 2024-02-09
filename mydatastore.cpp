@@ -145,21 +145,32 @@ vector<Product*> MyDataStore::getCart(std::string username) {
     vector<Product*> cart = carts.find(username)->second;
     return cart;
 }
-
 void MyDataStore::buyCart(std::string username) {
-    vector<Product*>* cart_ptr = &(carts.find(username)->second);
-    vector<Product*> cart = *cart_ptr;
-    User buyer;
-    for(int i=0; i<users.size(); i++){
-        if(users[i]->getName() == username){
-            buyer = *users[i];
+    auto cart_iter = carts.find(username);
+
+    if (cart_iter != carts.end()) {
+        vector<Product*>& cart = cart_iter->second;
+        User* buyer = nullptr;
+
+        for (User* user : users) {
+            if (user->getName() == username) {
+                buyer = user;
+                break;
+            }
         }
-    }
-    for(int i=0; i<cart.size(); i++){
-        if(cart[i]->getQty() > 0 and buyer.getBalance() >= cart[i]->getPrice()){
-            buyer.deductAmount(cart[i]->getPrice());
-            cart[i]->subtractQty(1);
-            cart_ptr->erase(cart_ptr->begin()+i);
+
+        if (buyer) {
+            auto it = cart.begin();
+            while (it != cart.end()) {
+                Product* product = *it;
+                if (product->getQty() > 0 && buyer->getBalance() >= product->getPrice()) {
+                    buyer->deductAmount(product->getPrice());
+                    product->subtractQty(1);
+                    it = cart.erase(it);  // erase returns the next iterator
+                } else {
+                    ++it;
+                }
+            }
         }
     }
 }
