@@ -18,6 +18,7 @@ struct ProdNameSorter {
     }
 };
 void displayProducts(vector<Product*>& hits);
+void displayCart(vector<Product*>& hits);
 
 int main(int argc, char* argv[])
 {
@@ -115,10 +116,7 @@ int main(int argc, char* argv[])
                     cout << "Invalid username" << endl;
                 }else{
                     vector<Product*> temp = ds.getCart(username);
-//                    reverse(temp.begin(), temp.end());
-                    for(size_t i=0; i<temp.size(); i++){
-                        cout << i+1 << " " << temp[i]->displayString() << endl;
-                    }
+                    displayCart(temp);
                 }
             }
             else if ( cmd == "BUYCART"){
@@ -138,6 +136,21 @@ int main(int argc, char* argv[])
     return 0;
 }
 
+void displayCart(vector<Product*>& hits)
+{
+
+    int resultNo = 1;
+    if (hits.begin() == hits.end()) {
+        cout << "No results found!" << endl;
+        return;
+    }
+    for(vector<Product*>::iterator it = hits.begin(); it != hits.end(); ++it) {
+        cout << "Hit " << setw(3) << resultNo << endl;
+        cout << (*it)->displayString() << endl;
+        cout << endl;
+        resultNo++;
+    }
+}
 void displayProducts(vector<Product*>& hits)
 {
 

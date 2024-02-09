@@ -40,7 +40,6 @@ bool isISBN(string s){
 }
 std::set<std::string> parseStringToWords(string rawWords)
 {
-    cerr << "RAWW: " << rawWords << endl;
     set<string> keyWords;
     if(isISBN(rawWords)){
         keyWords.insert(rawWords);

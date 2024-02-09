@@ -37,8 +37,6 @@ MyDataStore::~MyDataStore() {
 
 void MyDataStore::addProduct(Product *p) {
 
-    std::cout << "[addProduct()] starting\n";
-
     products.push_back(p);
     
     set<string> keyWords = p->keywords();
@@ -55,12 +53,9 @@ void MyDataStore::addProduct(Product *p) {
         }
 
     }
-    std::cout << "[addProduct()] added product\n";
 }
 
 void MyDataStore::addUser(User *u) {
-
-    std::cout << "[addUser()] starting fn\n";
 
     // check if user exist already
     bool exist = false;
