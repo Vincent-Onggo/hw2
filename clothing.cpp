@@ -12,11 +12,11 @@ Clothing ::Clothing(std::string name, double price, int quantity, std::string ca
 }
 
 set<string> Clothing :: keywords() const{
-    set<string> name_key, brand_key;
+    set<string> keys, name_key, brand_key;
     name_key = parseStringToWords(name_);
     brand_key = parseStringToWords(brand_);
-
-    return setUnion(name_key, brand_key);
+    keys = setUnion(name_key, brand_key);
+    return keys;
 }
 
 string Clothing ::displayString() const {
