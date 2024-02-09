@@ -5,7 +5,7 @@
 #include "mydatastore.h"
 #include "util.h"
 
-MyDataStore::MyDataStore() {
+MyDataStore::MyDataStore(): DataStore() {
 
 }
 
@@ -20,6 +20,7 @@ MyDataStore::~MyDataStore() {
     for (size_t i = 0; i < users.size(); ++i) {
         delete users[i];
     }
+    users.clear();
 
     // Delete products in productKeys
     for (map<string, set<Product*>>::iterator it=productKeys.begin(); it != productKeys.end(); ++it) {
