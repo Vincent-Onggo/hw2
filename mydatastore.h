@@ -8,6 +8,8 @@
 #include <iostream>
 #include <map>
 #include <queue>
+#include <unordered_map>
+
 
 using namespace std;
 
@@ -34,8 +36,8 @@ private:
     vector<Product*> products;
     vector<User*> users;
 
-    map<string, set<Product*> > productKeys;
-    map<string, vector<Product*>> carts; // key is username, queue is for the product
+    unordered_map<string, set<Product*> > productKeys;
+    unordered_map<string, vector<Product*>> carts; // key is username, queue is for the product
 };
 
 
