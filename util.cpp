@@ -13,24 +13,53 @@ std::string convToLower(std::string src)
 
 /** Complete the code to convert a string containing a rawWord
     to a set of words based on the criteria given in the assignment **/
+
+bool isISBN(string s){
+    bool isbn = true;
+    if(s.size() == 15){
+        for(int i=0; i<3; i++){
+            if(!(s[i] >= '0' and s[i] <= '9')){
+                isbn = false;
+            }
+        }
+        for(int i=4; i<13; i++){
+            if(!(s[i] >= '0' and s[i] <= '9')){
+                isbn = false;
+            }
+        }
+        if(!(s[15] >= '0' and s[15] < '9')){
+            isbn = false;
+        }
+        if(!(s[3] == '-' and s[13] == '-' )){
+            isbn = false;
+        }
+    }else{
+        isbn = false;
+    }
+    return isbn;
+}
 std::set<std::string> parseStringToWords(string rawWords)
 {
+    cerr << "RAWW: " << rawWords << endl;
     set<string> keyWords;
-    int len = rawWords.size();
-
-    string currentWord = "";
-    for(int i=0; i<len; i++){
-        if((rawWords[i] >= 'a' and rawWords[i] <= 'z') or (rawWords[i] >= 'A' and rawWords[i] <= 'Z')){
-            currentWord += rawWords[i];
-        }else{
-            if(currentWord.size() >= 2){
-                keyWords.insert(convToLower(currentWord));
+    if(isISBN(rawWords)){
+        keyWords.insert(rawWords);
+    }else{
+        int len = rawWords.size();
+        string currentWord = "";
+        for(int i=0; i<len; i++){
+            if((rawWords[i] >= 'a' and rawWords[i] <= 'z') or (rawWords[i] >= 'A' and rawWords[i] <= 'Z')){
+                currentWord += rawWords[i];
+            }else{
+                if(currentWord.size() >= 2){
+                    keyWords.insert(convToLower(currentWord));
+                }
+                currentWord = "";
             }
-            currentWord = "";
         }
-    }
-    if(currentWord.size() >= 2){
-        keyWords.insert(convToLower(currentWord));
+        if(currentWord.size() >= 2){
+            keyWords.insert(convToLower(currentWord));
+        }
     }
     return keyWords;
 }

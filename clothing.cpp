@@ -5,6 +5,7 @@
 #include "clothing.h"
 #include "util.h"
 #include <sstream>
+#include <iomanip>
 Clothing ::Clothing(std::string name, double price, int quantity, std::string cat, std::string size,
                     std::string brand): Product(cat, name, price, quantity ) {
     size_ = size;
@@ -20,7 +21,9 @@ set<string> Clothing :: keywords() const{
 }
 
 string Clothing ::displayString() const {
-    string price = to_string(price_);
+    stringstream ss;
+    ss << fixed << std::setprecision(2) << price_;
+    string price = ss.str();
     string qty = to_string(qty_);
 
     string output = name_ + "\n" + "Size: " + size_ + " Brand: " + brand_ + "\n" + price + " " + qty + " left.";

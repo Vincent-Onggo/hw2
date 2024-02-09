@@ -5,6 +5,7 @@
 #include "movie.h"
 #include "util.h"
 #include "product.h"
+#include <iomanip>
 #include <sstream>
 
 Movie::Movie(std::string name, double price, int quantity, std::string cat, std::string genre, std::string rating) : Product(cat, name, price, quantity){
@@ -23,7 +24,9 @@ set<string> Movie :: keywords() const{
 }
 
 string Movie ::displayString() const {
-    string price = to_string(price_);
+    stringstream ss;
+    ss << fixed << std::setprecision(2) << price_;
+    string price = ss.str();
     string qty = to_string(qty_);
     string output = name_ + "\n" + "Genre: " + genre_ + " Rating: " + rating_ + "\n" + price + " " + qty + " left.";
     return output;

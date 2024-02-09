@@ -52,3 +52,5 @@ std::string &rtrim(std::string &s) ;
 // Removes leading and trailing whitespace
 std::string &trim(std::string &s) ;
 #endif
+
+bool isISBN(std::string s);
