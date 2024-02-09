@@ -10,7 +10,6 @@ MyDataStore::MyDataStore() {
 }
 
 MyDataStore::~MyDataStore(){
-    cerr << "Destructor called" << endl;
     for(size_t i=0; i<products.size(); i++){
         delete products[i];
     }
@@ -146,9 +145,9 @@ void MyDataStore::buyCart(std::string username) {
     vector<Product*>* cart_ptr = &(carts.find(username)->second);
     vector<Product*> cart = *cart_ptr;
     User buyer;
-    for(int i=0; i<users.size(); i++){
-        if(users[i]->getName() == username){
-            buyer = *users[i];
+    for(auto & user : users){
+        if(user->getName() == username){
+            buyer = *user;
         }
     }
     for(int i=0; i<cart.size(); i++){
