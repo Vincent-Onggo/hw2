@@ -14,25 +14,25 @@ MyDataStore::~MyDataStore() {
     for (size_t i = 0; i < products.size(); ++i) {
         delete products[i];
     }
-    products.clear();
+
 
     // Delete users
     for (size_t i = 0; i < users.size(); ++i) {
         delete users[i];
     }
-    users.clear();
+
 
     // Delete products in productKeys
     for (map<string, set<Product*>>::iterator it=productKeys.begin(); it != productKeys.end(); ++it) {
         it->second.clear();
     }
-    productKeys.clear();
+
 
     // Delete products in carts
     for (map<string, vector<Product*>>::iterator it=carts.begin(); it != carts.end(); ++it) {
         it->second.clear();
     }
-    carts.clear();
+
 }
 
 void MyDataStore::addProduct(Product *p) {
@@ -40,11 +40,7 @@ void MyDataStore::addProduct(Product *p) {
     std::cout << "[addProduct()] starting\n";
 
     products.push_back(p);
-    cerr << "-------------PRODUCTS-------------\n";
-    for(auto product : products){
-        cout << product->getName() << "\n";
-    }
-    cerr << "\n----------------END PRODUCTS ---------------\n";
+    
     set<string> keyWords = p->keywords();
     // entering the product and keyword pair into the hash map
     for(set<string>::iterator it = keyWords.begin(); it != keyWords.end(); ++it){
