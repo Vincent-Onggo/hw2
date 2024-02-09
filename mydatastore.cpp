@@ -10,6 +10,7 @@ MyDataStore::MyDataStore() {
 }
 
 MyDataStore::~MyDataStore(){
+    cerr << "Destructor called" << endl;
     for(size_t i=0; i<products.size(); i++){
         delete products[i];
     }

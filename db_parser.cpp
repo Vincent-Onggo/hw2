@@ -66,6 +66,7 @@ bool DBParser::parse(string db_filename, DataStore& ds)
 
         }
         else if(state == IN_SECTION) {
+            cerr<<"Error here\n";
             if( (line.size() > 3) && line[0] == '<' && line[1] == '/' && line[line.size()-1] == '>') {
                 map<string, SectionParser*>::iterator it = parsers_.find(sectionName);
                 if(it != parsers_.end()) {
