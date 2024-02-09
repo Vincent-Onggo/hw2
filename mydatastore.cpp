@@ -9,30 +9,36 @@ MyDataStore::MyDataStore() {
 
 }
 
-MyDataStore::~MyDataStore(){
-    for(size_t i=0; i<products.size(); i++){
+MyDataStore::~MyDataStore() {
+    // Delete products
+    for (size_t i = 0; i < products.size(); ++i) {
         delete products[i];
     }
     products.clear();
-    for(size_t i=0; i<users.size(); i++){
+
+    // Delete users
+    for (size_t i = 0; i < users.size(); ++i) {
         delete users[i];
     }
     users.clear();
-    for(map<string, set<Product*>>::iterator it=productKeys.begin(); it!=productKeys.end(); ++it){
-        for(Product* product : it->second){
+
+    // Delete products in productKeys
+    for (auto& pair : productKeys) {
+        for (Product* product : pair.second) {
             delete product;
         }
-        it->second.clear();
+        pair.second.clear();
     }
     productKeys.clear();
-    for(map<string, vector<Product*>>::iterator it=carts.begin(); it!=carts.end(); ++it){
-        for(Product* product : it->second){
+
+    // Delete products in carts
+    for (auto& pair : carts) {
+        for (Product* product : pair.second) {
             delete product;
         }
-        it->second.clear();
+        pair.second.clear();
     }
     carts.clear();
-
 }
 
 void MyDataStore::addProduct(Product *p) {
@@ -145,9 +151,9 @@ void MyDataStore::buyCart(std::string username) {
     vector<Product*>* cart_ptr = &(carts.find(username)->second);
     vector<Product*> cart = *cart_ptr;
     User buyer;
-    for(auto & user : users){
-        if(user->getName() == username){
-            buyer = *user;
+    for(int i=0; i<users.size(); i++){
+        if(users[i]->getName() == username){
+            buyer = *users[i];
         }
     }
     for(int i=0; i<cart.size(); i++){
