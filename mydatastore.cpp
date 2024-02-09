@@ -23,13 +23,13 @@ MyDataStore::~MyDataStore() {
 
 
     // Delete products in productKeys
-    for (unordered_map<string, set<Product*>>::iterator it=productKeys.begin(); it != productKeys.end(); ++it) {
+    for (map<string, set<Product*>>::iterator it=productKeys.begin(); it != productKeys.end(); ++it) {
         it->second.clear();
     }
 
 
     // Delete products in carts
-    for (unordered_map<string, vector<Product*>>::iterator it=carts.begin(); it != carts.end(); ++it) {
+    for (map<string, vector<Product*>>::iterator it=carts.begin(); it != carts.end(); ++it) {
         it->second.clear();
     }
 
@@ -86,7 +86,7 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string> &terms, int t
     }
 
     for(vector<string>::iterator it=terms.begin(); it != terms.end(); ++it){
-        unordered_map<string, set<Product*>>::iterator results = productKeys.find(*it);
+        map<string, set<Product*>>::iterator results = productKeys.find(*it);
         if(results != productKeys.end()){
             temp2 = results->second;
         }
@@ -134,14 +134,12 @@ void MyDataStore::addToCart(std::string username, Product* item){
         carts.insert(make_pair(username, temp));
     }else{
         carts.find(username)->second.push_back(item);
-        for(auto i : carts.find(username)->second){
-            cerr << i->getName() << endl;
-        }
     }
 }
 
 vector<Product*> MyDataStore::getCart(std::string username) {
     vector<Product*> cart = carts.find(username)->second;
+
     return cart;
 }
 void MyDataStore::buyCart(std::string username) {

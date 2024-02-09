@@ -36,8 +36,8 @@ private:
     vector<Product*> products;
     vector<User*> users;
 
-    unordered_map<string, set<Product*> > productKeys;
-    unordered_map<string, vector<Product*>> carts; // key is username, queue is for the product
+    map<string, set<Product*> > productKeys;
+    map<string, vector<Product*>> carts; // key is username, queue is for the product
 };
 
 
